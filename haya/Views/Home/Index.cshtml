@@ -1,0 +1,303 @@
+﻿@model haya.Models.HomeViewModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero-section py-5 py-lg-6 reveal-scroll">
+    <div class="container">
+        <div class="row align-items-center gy-4">
+            <div class="col-lg-7">
+                <div class="hero-kicker mb-3">
+                    <span class="hero-kicker-dot"></span>
+                    <span class="lang-id">Industrial Software & Automation</span>
+                    <span class="lang-en">Industrial Software & Automation</span>
+                </div>
+                <h1 class="hero-title display-4 fw-bold mb-3">
+                    <span class="lang-id">
+                        Solusi digital & otomasi<br />
+                        <span class="hero-highlight">untuk dunia industri Anda</span>
+                    </span>
+                    <span class="lang-en">
+                        Digital solutions & automation<br />
+                        <span class="hero-highlight">for your industrial operations</span>
+                    </span>
+                </h1>
+                <p class="hero-subtitle fs-5 mb-4">
+                    <span class="lang-id">
+                        Kami membangun website, aplikasi, dan sistem otomasi industri yang terintegrasi
+                        dengan proses di lapangan — dari pabrik, gudang, hingga kantor.
+                    </span>
+                    <span class="lang-en">
+                        We build websites, applications, and industrial automation systems that are integrated
+                        with real operations — from factory floors and warehouses to offices.
+                    </span>
+                </p>
+                <div class="d-flex flex-wrap gap-2">
+                    <a asp-controller="Home" asp-action="Services" class="btn btn-primary btn-lg px-4">
+                        <span class="lang-id">Lihat Layanan</span>
+                        <span class="lang-en">View Services</span>
+                    </a>
+                    <a asp-controller="Home" asp-action="Contact" class="btn btn-outline-light btn-lg px-4">
+                        <span class="lang-id">Konsultasi Proyek</span>
+                        <span class="lang-en">Project Consultation</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-5 reveal-scroll animate-delay-1">
+                <div class="glass-card p-4 p-md-4">
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge-soft">
+                            <span class="lang-id">Snapshot Proyek</span>
+                            <span class="lang-en">Project Snapshot</span>
+                        </span>
+
+                        <span class="small text-muted">
+                            <span class="lang-id">Realtime insight</span>
+                            <span class="lang-en">Realtime insight</span>
+                        </span>
+                    </div>
+
+                    <ul class="list-unstyled mb-3">
+
+                        <!-- ITEM 1 -->
+                        <li class="d-flex justify-content-between mb-2">
+                            <div>
+                                <span class="small text-muted d-block">
+                                    <span class="lang-id">Web & Dashboard</span>
+                                    <span class="lang-en">Web & Dashboard</span>
+                                </span>
+
+                                <span class="fw-semibold">
+                                    <span class="lang-id">Sistem internal & monitoring</span>
+                                    <span class="lang-en">Internal systems & monitoring</span>
+                                </span>
+                            </div>
+
+                            <span class="badge bg-primary-subtle text-primary border-0">
+                                <span class="lang-id">Live</span>
+                                <span class="lang-en">Live</span>
+                            </span>
+                        </li>
+
+                        <!-- ITEM 2 -->
+                        <li class="d-flex justify-content-between mb-2">
+                            <div>
+                                <span class="small text-muted d-block">
+                                    <span class="lang-id">PLC & Mesin Pabrik</span>
+                                    <span class="lang-en">PLC & Factory Machines</span>
+                                </span>
+
+                                <span class="fw-semibold">
+                                    <span class="lang-id">Otomasi & integrasi sensor</span>
+                                    <span class="lang-en">Automation & sensor integration</span>
+                                </span>
+                            </div>
+
+                            <span class="badge bg-success-subtle text-success border-0">
+                                <span class="lang-id">Stable</span>
+                                <span class="lang-en">Stable</span>
+                            </span>
+                        </li>
+
+                        <!-- ITEM 3 -->
+                        <li class="d-flex justify-content-between">
+                            <div>
+                                <span class="small text-muted d-block">
+                                    <span class="lang-id">IoT & ESP32</span>
+                                    <span class="lang-en">IoT & ESP32</span>
+                                </span>
+
+                                <span class="fw-semibold">
+                                    <span class="lang-id">Monitoring suhu & timer</span>
+                                    <span class="lang-en">Temperature & timer monitoring</span>
+                                </span>
+                            </div>
+
+                            <span class="badge bg-info-subtle text-info border-0">
+                                <span class="lang-id">Connected</span>
+                                <span class="lang-en">Connected</span>
+                            </span>
+                        </li>
+
+                    </ul>
+
+                    <p class="small text-muted mb-0">
+                        <span class="lang-id">
+                            Mulai dari konsep hingga implementasi, kami bantu memilih teknologi yang paling
+                            masuk akal untuk kondisi dan budget perusahaan Anda.
+                        </span>
+
+                        <span class="lang-en">
+                            From concept to implementation, we help choose the most reasonable technology
+                            for your company's needs and budget.
+                        </span>
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="container mb-5">
+
+    <!-- Layanan Utama (dynamic) -->
+    <section class="mb-5 reveal-scroll animate-delay-1">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h3 mb-0">
+                <span class="lang-id">Layanan Utama</span>
+                <span class="lang-en">Core Services</span>
+            </h2>
+            <a asp-controller="Home" asp-action="Services" class="text-decoration-none text-muted">
+                <span class="lang-id">Lihat semua layanan →</span>
+                <span class="lang-en">View all services →</span>
+            </a>
+        </div>
+
+        <div class="row g-4">
+            @foreach (var service in Model.FeaturedServices)
+            {
+                <div class="col-md-4">
+                    <div class="glass-card hover-lift h-100 p-4">
+                        <h5 class="mb-2">@service.Title</h5>
+                        <p class="text-muted mb-3">@service.Description</p>
+                        @if (!string.IsNullOrWhiteSpace(service.BadgeText))
+                        {
+                            <span class="badge @service.BadgeCss">
+                                @service.BadgeText
+                            </span>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- Contoh Proyek singkat -->
+    <section class="mb-5 reveal-scroll animate-delay-2">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h3 mb-0">
+                <span class="lang-id">Contoh Proyek</span>
+                <span class="lang-en">Sample Projects</span>
+            </h2>
+            <small class="text-muted">
+                <span class="lang-id">*Dapat diganti dengan proyek nyata Anda</span>
+                <span class="lang-en">*You can replace these with your real projects</span>
+            </small>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="glass-card hover-lift h-100 p-4">
+                    <span class="badge bg-secondary-subtle border-0 mb-2">
+                        <span class="lang-id">Website</span>
+                        <span class="lang-en">Website</span>
+                    </span>
+                    <h5 class="mb-2">
+                        <span class="lang-id">Company Profile Pabrik Manufaktur</span>
+                        <span class="lang-en">Manufacturing Factory Company Profile</span>
+                    </h5>
+                    <p class="text-muted mb-3">
+                        <span class="lang-id">
+                            Website profil perusahaan dengan halaman produk, sertifikasi,
+                            dan form permintaan penawaran.
+                        </span>
+                        <span class="lang-en">
+                            Company profile website with product pages, certification section,
+                            and quotation request form.
+                        </span>
+                    </p>
+                    <small class="text-muted">
+                        Stack: ASP.NET Core, Bootstrap
+                    </small>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="glass-card hover-lift h-100 p-4">
+                    <span class="badge bg-secondary-subtle border-0 mb-2">
+                        <span class="lang-id">Dashboard</span>
+                        <span class="lang-en">Dashboard</span>
+                    </span>
+                    <h5 class="mb-2">
+                        <span class="lang-id">Sistem QC &amp; Label Printing</span>
+                        <span class="lang-en">QC System &amp; Label Printing</span>
+                    </h5>
+                    <p class="text-muted mb-3">
+                        <span class="lang-id">
+                            Aplikasi internal untuk label QC, tracking produksi,
+                            dan log aktivitas user di lantai produksi.
+                        </span>
+                        <span class="lang-en">
+                            Internal application for QC labels, production tracking,
+                            and user activity logs on the production floor.
+                        </span>
+                    </p>
+                    <small class="text-muted">
+                        Stack: ASP.NET Core, MySQL
+                    </small>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="glass-card hover-lift h-100 p-4">
+                    <span class="badge bg-secondary-subtle border-0 mb-2">
+                        <span class="lang-id">IoT</span>
+                        <span class="lang-en">IoT</span>
+                    </span>
+                    <h5 class="mb-2">
+                        <span class="lang-id">Monitoring Suhu &amp; Timer Mesin</span>
+                        <span class="lang-en">Machine Temperature &amp; Timer Monitoring</span>
+                    </h5>
+                    <p class="text-muted mb-3">
+                        <span class="lang-id">
+                            ESP32 + web dashboard untuk memantau suhu dan durasi proses,
+                            dengan alert jika melampaui batas.
+                        </span>
+                        <span class="lang-en">
+                            ESP32 with web dashboard to monitor temperature and process duration,
+                            with alerts when limits are exceeded.
+                        </span>
+                    </p>
+                    <small class="text-muted">
+                        Stack: ESP32, Web API
+                    </small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="glass-section p-4 p-md-5 mb-5 reveal-scroll animate-delay-3">
+        <div class="row align-items-center">
+            <div class="col-md-8 mb-3 mb-md-0">
+                <h2 class="h4 mb-2">
+                    <span class="lang-id">Punya ide sistem atau kendala di proses produksi?</span>
+                    <span class="lang-en">Have a system idea or issues in your production process?</span>
+                </h2>
+                <p class="mb-0 text-muted">
+                    <span class="lang-id">
+                        Kirimkan cerita singkat tentang kondisi di perusahaan Anda. Kami bantu terjemahkan
+                        menjadi solusi digital atau otomasi yang realistis dan bisa diimplementasikan.
+                    </span>
+                    <span class="lang-en">
+                        Share a short story about your current situation. We’ll help translate it into a
+                        realistic digital or automation solution that can actually be implemented.
+                    </span>
+                </p>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <a asp-controller="Home" asp-action="Contact" class="btn btn-primary btn-lg px-4">
+                    <span class="lang-id">Diskusi dengan kami</span>
+                    <span class="lang-en">Discuss with us</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+</div>

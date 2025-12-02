@@ -1,0 +1,167 @@
+﻿@model haya.Models.PortfolioViewModel
+
+@{
+    ViewData["Title"] = "Portfolio";
+}
+
+<!-- HERO PORTFOLIO -->
+<section class="hero-section py-5 py-lg-6 reveal-scroll">
+    <div class="container">
+        <div class="row align-items-center gy-4">
+            <div class="col-lg-7">
+                <div class="hero-kicker mb-3">
+                    <span class="hero-kicker-dot"></span>
+                    <span class="lang-id">Portofolio</span>
+                    <span class="lang-en">Portfolio</span>
+                </div>
+                <h1 class="hero-title display-5 fw-bold mb-3">
+                    <span class="lang-id">
+                        Contoh proyek yang<br />
+                        sudah kami kerjakan.
+                    </span>
+                    <span class="lang-en">
+                        Some of the projects<br />
+                        we have delivered.
+                    </span>
+                </h1>
+                <p class="hero-subtitle fs-5 mb-0">
+                    <span class="lang-id">
+                        Berikut adalah ringkasan proyek website, dashboard, IoT, dan otomasi industri
+                        yang pernah kami kerjakan. Proyek-proyek ini bisa menjadi gambaran
+                        solusi yang juga bisa kami terapkan di perusahaan Anda.
+                    </span>
+                    <span class="lang-en">
+                        Below is a summary of websites, dashboards, IoT, and industrial automation
+                        projects we’ve worked on. These examples show the kind of solutions
+                        we can also implement for your company.
+                    </span>
+                </p>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="glass-card p-4 reveal-scroll animate-delay-1">
+                    <span class="badge-soft mb-3 d-inline-block">
+                        <span class="lang-id">Tipe Proyek</span>
+                        <span class="lang-en">Project Types</span>
+                    </span>
+                    <p class="text-muted small mb-3">
+                        <span class="lang-id">
+                            Kami biasa mengerjakan kombinasi antara website, aplikasi internal,
+                            integrasi mesin, dan dashboard monitoring.
+                        </span>
+                        <span class="lang-en">
+                            We typically work on a mix of websites, internal applications,
+                            machine integrations, and monitoring dashboards.
+                        </span>
+                    </p>
+                    <ul class="small text-muted mb-0 ps-3">
+                        <li>
+                            <span class="lang-id">Website company profile &amp; landing page</span>
+                            <span class="lang-en">Company profile websites &amp; landing pages</span>
+                        </li>
+                        <li>
+                            <span class="lang-id">Dashboard QC, produksi, dan operasional</span>
+                            <span class="lang-en">QC, production, and operations dashboards</span>
+                        </li>
+                        <li>
+                            <span class="lang-id">Integrasi PLC, sensor, dan mesin pabrik</span>
+                            <span class="lang-en">PLC, sensor, and factory machine integrations</span>
+                        </li>
+                        <li>
+                            <span class="lang-id">IoT &amp; sistem monitoring berbasis web</span>
+                            <span class="lang-en">IoT &amp; web-based monitoring systems</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="container mb-5">
+
+    <!-- GRID PORTFOLIO -->
+    <section class="mb-5 reveal-scroll">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h3 mb-0">
+                <span class="lang-id">Proyek Terpilih</span>
+                <span class="lang-en">Selected Projects</span>
+            </h2>
+            <small class="text-muted">
+                <span class="lang-id">*Beberapa detail disederhanakan untuk privasi klien</span>
+                <span class="lang-en">*Some details are simplified to protect client privacy</span>
+            </small>
+        </div>
+
+        <div class="row g-4">
+            @foreach (var item in Model.Items)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card hover-lift h-100 p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="badge bg-secondary-subtle border-0">
+                                @item.Category
+                            </span>
+                        </div>
+
+                        <h5 class="mb-2">@item.Title</h5>
+
+                        <p class="text-muted small mb-3">
+                            @item.Description
+                        </p>
+
+                        @if (!string.IsNullOrWhiteSpace(item.TechStack))
+                        {
+                            <p class="text-muted small mb-1">
+                                <strong>
+                                    <span class="lang-id">Teknologi:</span>
+                                    <span class="lang-en">Tech stack:</span>
+                                </strong>
+                                @item.TechStack
+                            </p>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(item.Note))
+                        {
+                            <p class="text-muted small mb-0">
+                                <strong class="lang-id">Catatan:</strong>
+                                <strong class="lang-en">Note:</strong>
+                                @item.Note
+                            </p>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- CTA UNTUK DISKUSI PROYEK -->
+    <section class="glass-section p-4 p-md-5 mb-5 reveal-scroll animate-delay-2">
+        <div class="row align-items-center">
+            <div class="col-md-8 mb-3 mb-md-0">
+                <h2 class="h4 mb-2">
+                    <span class="lang-id">Ingin membahas proyek yang mirip dengan contoh di atas?</span>
+                    <span class="lang-en">Want to discuss a project similar to these?</span>
+                </h2>
+                <p class="mb-0 text-muted">
+                    <span class="lang-id">
+                        Kirimkan gambaran singkat tentang kebutuhan Anda — kami akan membantu
+                        menerjemahkannya menjadi rencana teknis yang jelas dan bisa diimplementasikan.
+                    </span>
+                    <span class="lang-en">
+                        Send us a short description of what you need — we’ll help translate it
+                        into a clear, implementable technical plan.
+                    </span>
+                </p>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <a asp-controller="Home" asp-action="Contact" class="btn btn-primary btn-lg">
+                    <span class="lang-id">Diskusi dengan kami</span>
+                    <span class="lang-en">Discuss with us</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</div>

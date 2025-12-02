@@ -1,0 +1,268 @@
+﻿@model haya.Models.ServicesViewModel
+
+@{
+    ViewData["Title"] = "Services";
+}
+
+<!-- HERO SECTION -->
+<section class="hero-section py-5 py-lg-6 reveal-scroll">
+    <div class="container">
+        <div class="row align-items-center gy-4">
+            <div class="col-lg-7">
+                <div class="hero-kicker mb-3">
+                    <span class="hero-kicker-dot"></span>
+                    <span class="lang-id">Layanan Kami</span>
+                    <span class="lang-en">Our Services</span>
+                </div>
+                <h1 class="hero-title display-5 fw-bold mb-3">
+                    <span class="lang-id">
+                        Layanan digital &amp; otomasi<br />
+                        untuk mendukung operasi industri Anda.
+                    </span>
+                    <span class="lang-en">
+                        Digital and automation services<br />
+                        to support your industrial operations.
+                    </span>
+                </h1>
+                <p class="hero-subtitle fs-5 mb-0">
+                    <span class="lang-id">
+                        Dari website company profile hingga sistem otomasi mesin pabrik,
+                        kami menyediakan layanan end-to-end yang bisa disesuaikan
+                        dengan proses bisnis dan infrastruktur yang sudah Anda miliki.
+                    </span>
+                    <span class="lang-en">
+                        From company profile websites to factory machine automation systems,
+                        we provide end-to-end services tailored to your business processes
+                        and existing infrastructure.
+                    </span>
+                </p>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="glass-card p-4 reveal-scroll animate-delay-1">
+                    <span class="badge-soft mb-3 d-inline-block">
+                        <span class="lang-id">Ringkasan Layanan</span>
+                        <span class="lang-en">Service Overview</span>
+                    </span>
+                    <p class="text-muted small mb-3">
+                        <span class="lang-id">
+                            Kami membantu menghubungkan kebutuhan di lantai produksi, gudang,
+                            dan kantor dengan sistem digital yang terintegrasi.
+                        </span>
+                        <span class="lang-en">
+                            We help bridge the needs of production floors, warehouses,
+                            and offices with integrated digital systems.
+                        </span>
+                    </p>
+                    <ul class="small text-muted mb-0 ps-3">
+                        <li>
+                            <span class="lang-id">Website &amp; aplikasi web untuk perusahaan</span>
+                            <span class="lang-en">Corporate websites &amp; web applications</span>
+                        </li>
+                        <li>
+                            <span class="lang-id">Dashboard operasional &amp; monitoring realtime</span>
+                            <span class="lang-en">Operational dashboards &amp; realtime monitoring</span>
+                        </li>
+                        <li>
+                            <span class="lang-id">Pemrograman PLC &amp; integrasi mesin industri</span>
+                            <span class="lang-en">PLC programming &amp; industrial machine integration</span>
+                        </li>
+                        <li>
+                            <span class="lang-id">IoT &amp; sistem monitoring berbasis sensor</span>
+                            <span class="lang-en">IoT &amp; sensor-based monitoring systems</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container mb-5">
+
+    <!-- LAYANAN UTAMA (dynamic) -->
+    <section class="mb-5 reveal-scroll">
+        <h2 class="h3 mb-3">
+            <span class="lang-id">Layanan Utama</span>
+            <span class="lang-en">Core Services</span>
+        </h2>
+        <p class="text-muted small mb-4">
+            <span class="lang-id">
+                Berikut beberapa layanan yang paling sering kami kerjakan untuk klien,
+                khususnya di dunia industri, manufaktur, dan operasional.
+            </span>
+            <span class="lang-en">
+                Here are some of the services we most frequently deliver for clients,
+                especially in industrial, manufacturing, and operational environments.
+            </span>
+        </p>
+
+        <div class="row g-4">
+            @foreach (var service in Model.Services)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card hover-lift h-100 p-4">
+                        <!-- Judul & deskripsi masih mengikuti bahasa dari model (saat ini ID) -->
+                        <h5 class="mb-2">@service.Title</h5>
+                        <p class="text-muted small mb-3">
+                            @service.Description
+                        </p>
+
+                        @if (!string.IsNullOrWhiteSpace(service.BadgeText))
+                        {
+                            <span class="badge @service.BadgeCss">
+                                @service.BadgeText
+                            </span>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- INDUSTRI YANG DILAYANI -->
+    <section class="mb-5 reveal-scroll animate-delay-1">
+        <h2 class="h3 mb-3">
+            <span class="lang-id">Kami Melayani Industri</span>
+            <span class="lang-en">Industries We Serve</span>
+        </h2>
+        <p class="text-muted small mb-4">
+            <span class="lang-id">
+                Layanan kami dirancang untuk menjembatani kebutuhan teknis dan operasional
+                di berbagai jenis industri berikut:
+            </span>
+            <span class="lang-en">
+                Our services are designed to bridge technical and operational needs
+                across the following types of industries:
+            </span>
+        </p>
+
+        <div class="row g-3">
+            @foreach (var item in Model.Industries)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card hover-lift p-3 h-100 d-flex align-items-center">
+                        <!-- Saat ini item masih 1 bahasa (ID), nanti bisa dibuat bilingual via model kalau mau -->
+                        <span class="text-muted small">@item</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- PROSES KERJA SINGKAT -->
+    <section class="mb-5 reveal-scroll animate-delay-2">
+        <h2 class="h3 mb-3">
+            <span class="lang-id">Bagaimana Kami Membantu Anda</span>
+            <span class="lang-en">How We Help You</span>
+        </h2>
+
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="glass-card p-3 p-md-4 h-100 text-center">
+                    <div class="display-6 mb-2">1</div>
+                    <h6 class="mb-2">
+                        <span class="lang-id">Identifikasi Kebutuhan</span>
+                        <span class="lang-en">Needs Identification</span>
+                    </h6>
+                    <p class="small text-muted mb-0">
+                        <span class="lang-id">
+                            Kami mulai dari memahami kondisi di lapangan: alur kerja,
+                            kendala, dan target yang ingin dicapai.
+                        </span>
+                        <span class="lang-en">
+                            We start by understanding real conditions on site: workflows,
+                            challenges, and the goals you want to achieve.
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="glass-card p-3 p-md-4 h-100 text-center">
+                    <div class="display-6 mb-2">2</div>
+                    <h6 class="mb-2">
+                        <span class="lang-id">Rancangan Solusi</span>
+                        <span class="lang-en">Solution Design</span>
+                    </h6>
+                    <p class="small text-muted mb-0">
+                        <span class="lang-id">
+                            Kami buat rancangan sistem dan teknologi yang paling realistis,
+                            termasuk estimasi waktu dan biaya.
+                        </span>
+                        <span class="lang-en">
+                            We design the most realistic system and technology approach,
+                            including time and cost estimates.
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="glass-card p-3 p-md-4 h-100 text-center">
+                    <div class="display-6 mb-2">3</div>
+                    <h6 class="mb-2">
+                        <span class="lang-id">Pengembangan &amp; Uji Coba</span>
+                        <span class="lang-en">Development &amp; Testing</span>
+                    </h6>
+                    <p class="small text-muted mb-0">
+                        <span class="lang-id">
+                            Sistem dibangun bertahap dan diuji langsung bersama tim Anda,
+                            sehingga hasil akhirnya sesuai kebutuhan.
+                        </span>
+                        <span class="lang-en">
+                            The system is built step by step and tested directly with your team,
+                            ensuring the final result matches your needs.
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="glass-card p-3 p-md-4 h-100 text-center">
+                    <div class="display-6 mb-2">4</div>
+                    <h6 class="mb-2">
+                        <span class="lang-id">Implementasi &amp; Support</span>
+                        <span class="lang-en">Implementation &amp; Support</span>
+                    </h6>
+                    <p class="small text-muted mb-0">
+                        <span class="lang-id">
+                            Setelah go-live, kami tetap siap membantu untuk maintenance,
+                            penyesuaian, dan pengembangan berikutnya.
+                        </span>
+                        <span class="lang-en">
+                            After go-live, we’re ready to support you with maintenance,
+                            adjustments, and future enhancements.
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="glass-section p-4 p-md-5 mb-5 reveal-scroll animate-delay-3">
+        <div class="row align-items-center">
+            <div class="col-md-8 mb-3 mb-md-0">
+                <h2 class="h4 mb-2">
+                    <span class="lang-id">Punya rencana proyek atau ingin upgrade sistem yang sudah ada?</span>
+                    <span class="lang-en">Planning a new project or upgrading an existing system?</span>
+                </h2>
+                <p class="mb-0 text-muted">
+                    <span class="lang-id">
+                        Ceritakan kebutuhan Anda — apakah itu website, aplikasi internal, atau
+                        integrasi mesin produksi. Kami siap bantu merumuskan solusi teknisnya.
+                    </span>
+                    <span class="lang-en">
+                        Tell us about your needs — whether it’s a website, internal application,
+                        or production machine integration. We’ll help you define the right technical solution.
+                    </span>
+                </p>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <a asp-controller="Home" asp-action="Contact" class="btn btn-primary btn-lg">
+                    <span class="lang-id">Diskusi dengan kami</span>
+                    <span class="lang-en">Discuss with us</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</div>

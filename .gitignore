@@ -1,0 +1,15 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build output
+bin/
+obj/
+
+# ASP.NET Core config (kalau ada secret)
+appsettings.json
+appsettings.Development.json
+
+# Publish output
+publish/

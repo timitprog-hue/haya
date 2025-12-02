@@ -1,0 +1,411 @@
+/* ========== THEME VARIABLES (DARK & LIGHT) ========== */
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg-main: #020617;
+    --bg-end: #000000;
+    --bg-elevated: #020817;
+    --bg-glass: rgba(15, 23, 42, 0.85);
+    --border-subtle: rgba(148, 163, 184, 0.25);
+    --accent: #38bdf8;
+    --accent-soft: rgba(56, 189, 248, 0.08);
+    --accent-2: #a855f7;
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+    --bg-main: #f9fafb;
+    --bg-end: #e5e7eb;
+    --bg-elevated: #ffffff;
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    --border-subtle: rgba(148, 163, 184, 0.35);
+    --accent: #0ea5e9;
+    --accent-soft: rgba(14, 165, 233, 0.06);
+    --accent-2: #6366f1;
+    --text-main: #111827;
+    --text-muted: #4b5563;
+}
+
+/* ========== GLOBAL ========== */
+
+body.bg-body {
+    min-height: 100vh;
+    color: var(--text-main);
+    background: radial-gradient(circle at top, var(--bg-main) 0, var(--bg-main) 40%, var(--bg-main) 60%, var(--bg-end) 100%);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.page-background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.18) 0, transparent 45%), radial-gradient(circle at 80% 0%, rgba(168, 85, 247, 0.2) 0, transparent 55%), radial-gradient(circle at 50% 100%, rgba(56, 189, 248, 0.12) 0, transparent 55%);
+    opacity: 0.9;
+    z-index: -2;
+}
+
+.page-wrapper {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+/* NAVBAR */
+.navbar-glass {
+    background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7));
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+:root[data-theme="light"] .navbar-glass {
+    background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7));
+    color: white;
+}
+
+.navbar-glass .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #e5e7eb;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+    .navbar-glass .navbar-brand:hover {
+        color: #ffffff;
+    }
+
+.brand-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: radial-gradient(circle, #38bdf8 0, #0ea5e9 45%, #a855f7 100%);
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.8);
+}
+
+.navbar-glass .nav-link {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    position: relative;
+    padding-inline: 0.85rem;
+}
+
+    .navbar-glass .nav-link:hover,
+    .navbar-glass .nav-link:focus,
+    .navbar-glass .nav-link.active {
+        color: #f9fafb;
+    }
+
+    .navbar-glass .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0.8rem;
+        right: 0.8rem;
+        bottom: 0.15rem;
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(to right, #38bdf8, #a855f7);
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.2s ease-out;
+    }
+
+    .navbar-glass .nav-link:hover::after,
+    .navbar-glass .nav-link.active::after {
+        transform: scaleX(1);
+    }
+
+.brand-logo {
+    height: 32px;
+    width: auto;
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.4));
+    transition: transform 0.2s ease;
+}
+
+    .brand-logo:hover {
+        transform: scale(1.07);
+    }
+
+
+/* ===== Sticky navbar & modern glass pill ===== */
+
+.main-header.sticky-top {
+    z-index: 1080; /* di atas konten lain */
+}
+
+/* Bungkus navbar jadi seperti pill di tengah layar */
+.navbar-glass {
+    max-width: 1120px;
+    margin: 0.75rem auto;
+    border-radius: 999px;
+    padding-inline: 1rem;
+    background: linear-gradient( to right, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.9) );
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.85), 0 0 0 1px rgba(15, 23, 42, 0.8);
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.18s ease;
+}
+
+    /* Saat discroll, navbar makin solid dan sedikit naik */
+    .navbar-glass.navbar-scrolled {
+        background: linear-gradient( to right, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.98) );
+        box-shadow: 0 22px 55px rgba(15, 23, 42, 0.95), 0 0 0 1px rgba(56, 189, 248, 0.25);
+        transform: translateY(-2px);
+    }
+
+/* Mobile: pill sedikit lebih kotak & full lebar */
+@media (max-width: 992px) {
+    .navbar-glass {
+        max-width: 100%;
+        margin-inline: 0.75rem;
+        border-radius: 1.25rem;
+    }
+}
+
+/* Brand & nav link sedikit diperhalus */
+
+.navbar-glass .navbar-brand {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    opacity: 0.95;
+}
+
+.navbar-glass .nav-link {
+    font-size: 0.9rem;
+    padding-inline: 0.9rem;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+    .navbar-glass .nav-link:hover,
+    .navbar-glass .nav-link:focus,
+    .navbar-glass .nav-link.active {
+        color: #f9fafb;
+    }
+
+/* Biar tombol di kanan terasa compact & modern */
+.main-header .btn-group.btn-group-sm .btn {
+    font-size: 0.7rem;
+    padding-inline: 0.65rem;
+    padding-block: 0.25rem;
+}
+
+.main-header #themeToggle {
+    font-size: 0.75rem;
+    padding-block: 0.25rem;
+}
+
+.main-header .btn.btn-primary {
+    font-size: 0.8rem;
+    padding-block: 0.35rem;
+}
+
+
+/* CARDS & GLASS */
+
+.glass-card {
+    background: var(--bg-glass);
+    border-radius: 1.25rem;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75), 0 0 0 1px rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(18px);
+}
+
+.glass-section {
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8));
+    border-radius: 1.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+:root[data-theme="light"] .glass-section {
+    background: linear-gradient(145deg, #ffffff, #e5e7eb);
+}
+
+/* hover effect */
+.hover-lift {
+    transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out, background 0.18s ease-out;
+}
+
+    .hover-lift:hover {
+        transform: translateY(-4px) translateZ(0);
+        box-shadow: 0 24px 60px rgba(15, 23, 42, 0.4), 0 0 0 1px rgba(56, 189, 248, 0.3);
+        border-color: rgba(56, 189, 248, 0.6);
+    }
+
+/* HERO SECTION */
+
+.hero-section {
+    position: relative;
+}
+
+.hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    color: #bae6fd;
+}
+
+:root[data-theme="light"] .hero-kicker {
+    background: rgba(15, 23, 42, 0.95);
+}
+
+.hero-kicker-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #22c55e;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+}
+
+.hero-title {
+    color: #f9fafb;
+}
+
+:root[data-theme="light"] .hero-title {
+    color: #0f172a;
+}
+
+.hero-highlight {
+    background: linear-gradient(to right, #38bdf8, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-subtitle {
+    color: var(--text-muted);
+}
+
+/* BADGES */
+
+.badge-soft {
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    background: rgba(15, 23, 42, 0.9);
+    color: #e5e7eb;
+}
+
+.bg-primary-subtle {
+    background-color: rgba(56, 189, 248, 0.14) !important;
+}
+
+.bg-success-subtle {
+    background-color: rgba(34, 197, 94, 0.14) !important;
+}
+
+.bg-warning-subtle {
+    background-color: rgba(250, 204, 21, 0.2) !important;
+}
+
+.bg-danger-subtle {
+    background-color: rgba(248, 113, 113, 0.16) !important;
+}
+
+.bg-secondary-subtle {
+    background-color: rgba(148, 163, 184, 0.18) !important;
+}
+
+.bg-info-subtle {
+    background-color: rgba(56, 189, 248, 0.18) !important;
+}
+
+/* TEXT & FOOTER */
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.footer-glass {
+    background: radial-gradient(circle at top, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.9));
+    border-top: 1px solid rgba(148, 163, 184, 0.35);
+    backdrop-filter: blur(14px);
+}
+
+:root[data-theme="light"] .footer-glass {
+    background: linear-gradient(to top, #0f172a, #111827);
+    color: #e5e7eb;
+}
+
+/* UTILITIES */
+.tracking-wide {
+    letter-spacing: 0.08em;
+}
+
+/* ========== ANIMATIONS & SCROLL REVEAL ========== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Elemen yang akan di-animate saat discroll */
+.reveal-scroll {
+    opacity: 0;
+    transform: translateY(18px);
+    will-change: opacity, transform;
+}
+
+    .reveal-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        animation: fadeUp 0.7s ease-out both;
+    }
+
+.animate-delay-1 {
+    animation-delay: 0.1s;
+}
+
+.animate-delay-2 {
+    animation-delay: 0.2s;
+}
+
+.animate-delay-3 {
+    animation-delay: 0.3s;
+}
+
+/* ========== MULTI LANGUAGE VISIBILITY ========== */
+.lang-id,
+.lang-en {
+    /* biar inline di mana saja */
+    display: inline;
+}
+
+:root[data-lang="id"] .lang-en {
+    display: none !important;
+}
+
+:root[data-lang="en"] .lang-id {
+    display: none !important;
+}
+
+/* tombol language toggle aktif */
+.lang-toggle-btn.active {
+    background: linear-gradient(to right, #38bdf8, #a855f7);
+    border-color: transparent;
+    color: #f9fafb;
+}
