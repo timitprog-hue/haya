@@ -11,16 +11,71 @@ namespace haya.Controllers
     {
         public IActionResult Index()
         {
-            var services = GetServices();
+            // --- Services section (ambil dari GetServices()) ---
+            var services = GetServices(); // sudah ada di controller kamu
 
-            var homeViewModel = new HomeViewModel
+            var servicesVm = new ServicesViewModel
             {
-                // ambil 3 layanan teratas untuk ditampilkan di Home
+                Services = services.ToList(),
+                Industries = new List<string>
+        {
+            "Manufaktur",
+            "QC & Produksi",
+            "Warehouse / Gudang",
+            "Distribusi & Logistik",
+            "Perkantoran & Jasa"
+        }
+            };
+
+            // --- Home section (yang sebelumnya FeaturedServices) ---
+            var homeVm = new HomeViewModel
+            {
                 FeaturedServices = services.Take(3).ToList()
             };
 
-            return View(homeViewModel);
+            // --- Portfolio dummy (bisa kamu ganti nanti) ---
+            var portfolioVm = new PortfolioViewModel
+            {
+                Items = new List<PortfolioItem>
+        {
+            new PortfolioItem
+            {
+                Title = "Website Company Profile Pabrik Manufaktur",
+                Category = "Website",
+                Description = "Website dengan halaman produk, sertifikasi, dan form penawaran.",
+                TechStack = "ASP.NET Core, Bootstrap",
+                Note = "Client industri manufaktur"
+            },
+            new PortfolioItem
+            {
+                Title = "Sistem QC & Label Printing",
+                Category = "Dashboard",
+                Description = "Aplikasi internal untuk QC label, tracking, dan activity log.",
+                TechStack = "ASP.NET Core, MySQL",
+                Note = "Dipakai tim QC & Produksi"
+            },
+            new PortfolioItem
+            {
+                Title = "Monitoring Suhu & Timer Mesin",
+                Category = "IoT",
+                Description = "ESP32 + web dashboard untuk monitoring suhu & timer.",
+                TechStack = "ESP32, Web API",
+                Note = "Integrasi mesin existing"
+            }
         }
+            };
+
+            // --- Gabungkan semua ke dalam HomePageViewModel ---
+            var pageVm = new HomePageViewModel
+            {
+                Home = homeVm,
+                Services = servicesVm,
+                Portfolio = portfolioVm
+            };
+
+            return View(pageVm);
+        }
+
 
 
         public IActionResult Privacy()
@@ -65,54 +120,7 @@ namespace haya.Controllers
 
         public IActionResult Portfolio()
         {
-            var model = new PortfolioViewModel
-            {
-                Items = new List<PortfolioItem>
-        {
-            new PortfolioItem
-            {
-                Title = "Website Company Profile Pabrik Manufaktur",
-                Category = "Website",
-                Description = "Website company profile dengan halaman produk, sertifikasi, dan form permintaan penawaran yang terhubung ke tim sales.",
-                TechStack = "ASP.NET Core, Bootstrap, SQL Server",
-                Note = "Client industri manufaktur (B2B)"
-            },
-            new PortfolioItem
-            {
-                Title = "Sistem QC & Label Printing",
-                Category = "Dashboard",
-                Description = "Aplikasi internal untuk mencetak label QC, tracking produksi, dan log aktivitas user di lantai produksi.",
-                TechStack = "ASP.NET Core, MySQL",
-                Note = "Digunakan oleh tim QC & produksi"
-            },
-            new PortfolioItem
-            {
-                Title = "Monitoring Suhu & Timer Mesin",
-                Category = "IoT",
-                Description = "ESP32 + web dashboard untuk memantau suhu proses dan durasi siklus, dilengkapi notifikasi jika melewati batas.",
-                TechStack = "ESP32, Web API, Web Dashboard",
-                Note = "Integrasi dengan mesin existing"
-            },
-            new PortfolioItem
-            {
-                Title = "Dashboard Produksi Harian",
-                Category = "Dashboard",
-                Description = "Dashboard untuk menampilkan output produksi harian, downtime, dan efisiensi per mesin.",
-                TechStack = "ASP.NET Core, Chart library",
-                Note = "Internal project"
-            },
-            new PortfolioItem
-            {
-                Title = "Integrasi PLC ke Database",
-                Category = "PLC & Automation",
-                Description = "Integrasi data dari PLC ke database untuk monitoring dan pencatatan histori proses.",
-                TechStack = "PLC, OPC / Modbus, Database",
-                Note = "Integrasi ke sistem laporan harian"
-            }
-        }
-            };
-
-            return View(model);
+            return View();
         }
 
 
@@ -160,14 +168,8 @@ namespace haya.Controllers
             BadgeText = "Industry 4.0",
             BadgeCss = "bg-secondary-subtle border border-secondary text-secondary"
         },
-        new ServiceItem
-        {
-            Title = "Custom Software Development",
-            Description = "Pengembangan aplikasi khusus: integrasi API, otomasi pekerjaan manual, atau sistem internal custom.",
-            BadgeText = "Custom",
-            BadgeCss = "bg-info-subtle border border-info text-info"
-        }
     };
+
         }
 
 

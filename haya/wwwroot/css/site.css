@@ -409,3 +409,174 @@ body.bg-body {
     border-color: transparent;
     color: #f9fafb;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Biar pas click link, section turun sedikit dari bawah navbar */
+section[id] {
+    scroll-margin-top: 96px; /* kira-kira tinggi navbar */
+}
+
+/* Style nav-link active */
+.navbar-glass .nav-link.active {
+    color: #f9fafb;
+    position: relative;
+}
+
+    .navbar-glass .nav-link.active::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -4px;
+        transform: translateX(-50%);
+        width: 18px;
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(to right, #38bdf8, #a855f7);
+    }
+
+/* ===== Smooth scroll & offset untuk sticky navbar ===== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+section[id] {
+    scroll-margin-top: 96px; /* kira-kira tinggi navbar */
+}
+
+/* ===== Scroll reveal animation ===== */
+
+.reveal-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+    .reveal-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+.animate-delay-1 {
+    transition-delay: 0.12s;
+}
+
+.animate-delay-2 {
+    transition-delay: 0.24s;
+}
+
+.animate-delay-3 {
+    transition-delay: 0.36s;
+}
+
+/* ===== Active nav link style (scrollspy) ===== */
+
+.navbar-glass .nav-link {
+    position: relative;
+    font-size: 0.9rem;
+    padding-inline: 0.9rem;
+    color: var(--text-muted, #9ca3af);
+}
+
+    .navbar-glass .nav-link.active {
+        color: #f9fafb;
+    }
+
+        .navbar-glass .nav-link.active::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -4px;
+            transform: translateX(-50%);
+            width: 18px;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(to right, #38bdf8, #a855f7);
+        }
+
+/* BUTTON OUTLINE HANDLING FOR LIGHT MODE */
+:root[data-theme="light"] .btn-outline-light {
+    color: #0f172a !important; /* teks navy */
+    border-color: #0f172a !important; /* border navy */
+}
+
+    :root[data-theme="light"] .btn-outline-light:hover {
+        background-color: #0f172a !important;
+        color: white !important; /* teks jadi putih saat hover */
+    }
+
+
+.glass-card .fw-semibold {
+    color: var(--color-text) !important;
+}
+
+/* Warna text utama di dalam glass-card */
+.glass-card .fw-semibold {
+    color: var(--color-text) !important;
+}
+
+/* NAVBAR LINK – DEFAULT (DARK MODE) */
+.navbar-glass .nav-link {
+    color: #f1f5f9; /* slate-100 */
+}
+
+/* HOVER */
+.navbar-glass .nav-link:hover {
+    color: #38bdf8; /* blue-300 */
+}
+
+/* ACTIVE (underline + color) */
+.navbar-glass .nav-link.active {
+    color: #38bdf8 !important;
+}
+
+/* --- LIGHT MODE FIX --- */
+:root[data-theme="light"] .navbar-glass .nav-link {
+    color: #0f172a !important;   /* navy */
+}
+
+:root[data-theme="light"] .navbar-glass .nav-link:hover {
+    color: #2563eb !important;   /* blue-600 */
+}
+
+:root[data-theme="light"] .navbar-glass .nav-link.active {
+    color: #2563eb !important;
+    text-shadow: none;
+}
+
+/* SLIDER PORTFOLIO MODERN */
+.portfolio-slider {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+    .portfolio-slider::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .portfolio-slider::-webkit-scrollbar-thumb {
+        background: rgba(100, 116, 139, 0.4);
+        border-radius: 10px;
+    }
+
+.portfolio-item {
+    min-width: 320px; /* Bisa diubah 280–360 */
+    max-width: 360px;
+    scroll-snap-align: start;
+}
+
+/* Di desktop card lebih besar */
+@media (min-width: 992px) {
+    .portfolio-item {
+        min-width: 380px;
+        max-width: 420px;
+    }
+}
